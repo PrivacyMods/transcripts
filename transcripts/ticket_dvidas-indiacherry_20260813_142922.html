@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transcript #dvidas-indiacherry — PrivacyBOT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#1a1a2e;--bg-secondary:#16213e;--bg-msg:#1e1e32;--bg-msg-hover:#22223a;--bg-embed:#111827;--text:#dcddde;--text-muted:#72767d;--text-link:#00aff4;--header-primary:#fff;--accent:#8b5cf6;--accent2:#a78bfa;--divider:rgba(255,255,255,.06)}
+body{font-family:'Inter','Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:15px;line-height:1.5}
+a{color:var(--text-link);text-decoration:none}a:hover{text-decoration:underline}
+
+/* Header */
+.transcript-header{background:linear-gradient(135deg,#0f0c29 0%,#302b63 50%,#24243e 100%);padding:48px 32px;text-align:center;border-bottom:1px solid var(--divider);position:relative;overflow:hidden}
+.transcript-header::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 50%,rgba(139,92,246,.15) 0%,transparent 60%);pointer-events:none}
+.transcript-header h1{font-size:28px;font-weight:700;color:var(--header-primary);margin-bottom:8px;letter-spacing:-.5px}
+.transcript-header .subtitle{color:var(--text-muted);font-size:14px;margin-bottom:24px}
+.header-stats{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+.header-stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 20px;min-width:140px}
+.header-stat .stat-value{font-size:18px;font-weight:700;color:var(--header-primary)}
+.header-stat .stat-label{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+
+/* Details */
+.ticket-details{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;padding:20px 32px;background:var(--bg-secondary);border-bottom:1px solid var(--divider)}
+.detail-item{display:flex;flex-direction:column;gap:4px}
+.detail-label{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;font-weight:600}
+.detail-value{font-size:14px;color:var(--header-primary);font-weight:500}
+
+/* Messages */
+.messages-container{padding:16px 0}
+.message{display:flex;padding:4px 32px;position:relative;transition:background .1s}
+.message:hover{background:var(--bg-msg-hover)}
+.message-grouped{padding-top:2px}
+.msg-gutter{width:56px;flex-shrink:0;display:flex;align-items:flex-start;justify-content:center;padding-top:4px}
+.msg-gutter .hover-time{font-size:10px;color:var(--text-muted);opacity:0;transition:opacity .1s;margin-top:4px}
+.message:hover .hover-time{opacity:1}
+.avatar{width:40px;height:40px;border-radius:50%;object-fit:cover}
+.msg-content{flex:1;min-width:0}
+.msg-header{display:flex;align-items:baseline;gap:8px;margin-bottom:2px}
+.author{font-weight:600;font-size:15px;cursor:pointer}
+.author:hover{text-decoration:underline}
+.bot-tag{background:#5865f2;color:#fff;font-size:10px;font-weight:600;padding:1px 5px;border-radius:3px;display:inline-flex;align-items:center;gap:2px;vertical-align:middle;position:relative;top:-1px}
+.bot-tag svg{width:12px;height:12px}
+.timestamp{font-size:12px;color:var(--text-muted);font-weight:400}
+.text{color:var(--text);word-wrap:break-word;white-space:pre-wrap}
+.text br{content:'';display:block;margin-top:4px}
+
+/* Reply */
+.reply-bar{display:flex;align-items:center;gap:6px;margin-bottom:4px;padding:4px 0;font-size:13px;color:var(--text-muted)}
+.reply-bar::before{content:'';width:24px;height:12px;border-left:2px solid var(--text-muted);border-top:2px solid var(--text-muted);border-radius:6px 0 0 0;margin-left:16px;margin-right:4px;opacity:.4}
+.reply-avatar{width:16px;height:16px;border-radius:50%}
+.reply-author{font-weight:600;font-size:12px;color:var(--header-primary)}
+.reply-content{font-size:13px;opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:400px}
+
+/* Emojis & Formatting */
+.emoji{width:22px;height:22px;vertical-align:middle;object-fit:contain}
+.inline-code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px}
+.code-block{background:#0d1117;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:12px 16px;margin:8px 0;overflow-x:auto}
+.code-block code{font-family:'JetBrains Mono',monospace;font-size:13px;color:#e6edf3;white-space:pre}
+.spoiler{background:var(--text-muted);color:transparent;border-radius:3px;padding:0 4px;cursor:pointer;transition:all .2s}
+.spoiler:hover{background:rgba(255,255,255,.1);color:var(--text)}
+.mention{background:rgba(88,101,242,.15);color:#dee0fc;padding:0 4px;border-radius:3px;font-weight:500}
+.link{color:var(--text-link);word-break:break-all}
+strong{font-weight:700}
+
+/* Attachments */
+.attachment-img{margin:8px 0;max-width:420px}
+.attachment-img img{max-width:100%;border-radius:8px;display:block}
+.attachment-file{display:flex;align-items:center;gap:12px;background:var(--bg-embed);border:1px solid var(--divider);border-radius:8px;padding:12px 16px;margin:8px 0;max-width:420px}
+.file-icon{font-size:28px}
+.file-info{flex:1;min-width:0}
+.file-name{display:block;font-size:14px;font-weight:500;color:var(--text-link);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.file-size{font-size:12px;color:var(--text-muted)}
+.file-download{font-size:20px;opacity:.6}
+
+/* Embeds */
+.embed{display:flex;margin:8px 0;max-width:520px;background:var(--bg-embed);border-radius:8px;border-left:4px solid #5865f2;overflow:hidden}
+.embed-inner{padding:14px 16px;flex:1;min-width:0;position:relative}
+.embed-author{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:13px;font-weight:600;color:var(--header-primary)}
+.embed-author-icon{width:20px;height:20px;border-radius:50%}
+.embed-title{font-size:15px;font-weight:700;color:var(--header-primary);margin-bottom:6px}
+.embed-title a{color:var(--text-link)}
+.embed-desc{font-size:14px;color:var(--text);line-height:1.5;margin-bottom:8px}
+.embed-fields{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.embed-field{min-width:0}.embed-field:not(.inline){grid-column:1/-1}
+.embed-field-name{font-size:13px;font-weight:700;color:var(--header-primary);margin-bottom:2px}
+.embed-field-value{font-size:13px;color:var(--text);word-wrap:break-word}
+.embed-image{margin-top:12px}.embed-image img{max-width:100%;border-radius:6px}
+.embed-thumb{position:absolute;top:14px;right:16px;width:64px;height:64px;border-radius:6px;object-fit:cover}
+.embed-footer{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:12px;color:var(--text-muted)}
+.embed-footer-icon{width:16px;height:16px;border-radius:50%}
+
+/* Stickers */
+.sticker{margin:8px 0}.sticker img{width:160px;height:160px;object-fit:contain}
+
+/* Reactions */
+.reactions{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.reaction{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:8px;cursor:default}
+.reaction-inner{display:flex;align-items:center;gap:4px;padding:4px 8px;font-size:14px}
+.reaction-emoji{width:18px;height:18px;vertical-align:middle}
+.reaction-count{font-size:12px;font-weight:500;color:var(--text-muted)}
+
+/* Components/Buttons */
+.components{margin-top:8px}
+.component-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+.discord-btn{padding:6px 16px;border-radius:4px;font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:6px;cursor:default;opacity:.85}
+.discord-btn .btn-emoji{width:18px;height:18px;vertical-align:middle}
+.btn-primary{background:#5865f2;color:#fff}.btn-secondary{background:#4f545c;color:#fff}.btn-success{background:#3ba55c;color:#fff}.btn-danger{background:#ed4245;color:#fff}.btn-link{background:transparent;border:1px solid #4f545c;color:var(--text-link)}
+
+/* Divider */
+.day-divider{display:flex;align-items:center;gap:12px;padding:16px 32px;color:var(--text-muted);font-size:12px;font-weight:600}
+.day-divider::before,.day-divider::after{content:'';flex:1;height:1px;background:var(--divider)}
+
+/* Footer */
+.transcript-footer{background:var(--bg-secondary);border-top:1px solid var(--divider);padding:32px;text-align:center}
+.footer-brand{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:12px}
+.footer-brand .brand-dot{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#ec4899);display:flex;align-items:center;justify-content:center;font-size:18px}
+.footer-brand span{font-size:16px;font-weight:700;color:var(--header-primary)}
+.footer-meta{font-size:12px;color:var(--text-muted);margin-top:8px}
+
+/* Empty */
+.empty-state{text-align:center;padding:60px 20px;color:var(--text-muted);font-size:16px}
+
+/* Responsive */
+@media(max-width:640px){
+    .message{padding:4px 16px}
+    .msg-gutter{width:44px}
+    .avatar{width:32px;height:32px}
+    .header-stats{flex-direction:column;align-items:center}
+    .transcript-header{padding:32px 16px}
+    .ticket-details{padding:16px}
+    .embed{max-width:100%}
+    .attachment-img{max-width:100%}
+}
+</style>
+</head>
+<body>
+<div class="transcript-header">
+    <h1>🔒 Transcript do Ticket</h1>
+    <p class="subtitle">#dvidas-indiacherry • Criado por 𝒞ℎ𝑒𝑟𝑟𝑦 ᶜᵒˡᵈ</p>
+    <div class="header-stats">
+        <div class="header-stat"><div class="stat-value">12</div><div class="stat-label">Mensagens</div></div>
+        <div class="header-stat"><div class="stat-value">2</div><div class="stat-label">Participantes</div></div>
+        <div class="header-stat"><div class="stat-value">13/08/2026 11:15:31</div><div class="stat-label">Aberto em</div></div>
+        <div class="header-stat"><div class="stat-value">13/08/2026 11:29:21</div><div class="stat-label">Fechado em</div></div>
+    </div>
+</div>
+<div class="ticket-details"><div class="detail-item"><span class="detail-label">Painel</span><span class="detail-value">Suporte Privacy</span></div><div class="detail-item"><span class="detail-label">Modo</span><span class="detail-value">channel</span></div><div class="detail-item"><span class="detail-label">Motivo do fechamento</span><span class="detail-value">xfc</span></div><div class="detail-item"><span class="detail-label">Fechado por</span><span class="detail-value">Cherry</span></div><div class="detail-item"><span class="detail-label">Assumido por</span><span class="detail-value">Não assumido</span></div><div class="detail-item"><span class="detail-label">Prioridade</span><span class="detail-value">Normal</span></div><div class="detail-item"><span class="detail-label">Status</span><span class="detail-value">Fechado</span></div></div>
+<div class="messages-container">
+<div class="message">
+                    <div class="msg-gutter"><img src="https://cdn.discordapp.com/avatars/1534194785655459960/bdf2083e701c309d75a99882800c4a0c.png?size=1024" class="avatar" loading="lazy"></div>
+                    <div class="msg-content">
+                        
+                        <div class="msg-header">
+                            <span class="author" style="color:#607d8b">Privacyᵇᵒᵗ</span>
+                            <span class="bot-tag"><svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M7.4,11.17,4,8.62,5,7.26l2,1.53L10.64,4l1.36,1Z"/></svg>BOT</span>
+                            <span class="timestamp">13/08/2026 11:15</span>
+                        </div>
+                        
+                        <div class="components"><div class="component-row"></div></div>
+                    </div>
+                </div><div class="message message-grouped">
+                    <div class="msg-gutter"><span class="hover-time">11:15</span></div>
+                    <div class="msg-content">
+                        
+                        
+                        <div class="components"><div class="component-row"><div class="discord-btn btn-secondary"><img src="https://cdn.discordapp.com/emojis/1536114809488019506.webp?size=20" class="btn-emoji"> Painel do Atendente</div><div class="discord-btn btn-secondary"><img src="https://cdn.discordapp.com/emojis/1536114744560459826.webp?size=20" class="btn-emoji"> Painel do Usuário</div><div class="discord-btn btn-secondary"><img src="https://cdn.discordapp.com/emojis/1536114721990770801.webp?size=20" class="btn-emoji"> </div></div></div>
+                    </div>
+                </div><div class="message">
+                    <div class="msg-gutter"><img src="https://cdn.discordapp.com/avatars/1000961474086322249/655aa7c28aaaabce01a439020959735f.png?size=1024" class="avatar" loading="lazy"></div>
+                    <div class="msg-content">
+                        
+                        <div class="msg-header">
+                            <span class="author" style="color:#6a009e">Cherry</span>
+                            
+                            <span class="timestamp">13/08/2026 11:28</span>
+                        </div>
+                        <div class="text">dfbgdzf</div>
+                        
+                    </div>
+                </div><div class="message message-grouped">
+                    <div class="msg-gutter"><span class="hover-time">11:28</span></div>
+                    <div class="msg-content">
+                        
+                        <div class="text">cvbdfbnf</div>
+                        
+                    </div>
+                </div><div class="message message-grouped">
+                    <div class="msg-gutter"><span class="hover-time">11:28</span></div>
+                    <div class="msg-content">
+                        
+                        <div class="text">]<img src="<a href="https://cdn.discordapp.com/emojis/1075097205540663417.gif?size=48"" target="_blank" class="link">https://cdn.discordapp.com/emojis/1075097205540663417.gif?size=48"</a> class="emoji" alt=":3_dancing:"></div>
+                        
+                    </div>
+                </div><div class="message">
+                    <div class="msg-gutter"><img src="https://cdn.discordapp.com/avatars/1534194785655459960/bdf2083e701c309d75a99882800c4a0c.png?size=1024" class="avatar" loading="lazy"></div>
+                    <div class="msg-content">
+                        <div class="reply-bar">
+                        <img src="https://cdn.discordapp.com/avatars/1000961474086322249/655aa7c28aaaabce01a439020959735f.png?size=1024" class="reply-avatar">
+                        <span class="reply-author">Cherry</span>
+                        <span class="reply-content">dfbgdzf</span>
+                    </div>
+                        <div class="msg-header">
+                            <span class="author" style="color:#607d8b">Privacyᵇᵒᵗ</span>
+                            <span class="bot-tag"><svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M7.4,11.17,4,8.62,5,7.26l2,1.53L10.64,4l1.36,1Z"/></svg>BOT</span>
+                            <span class="timestamp">13/08/2026 11:28</span>
+                        </div>
+                        <div class="text">Olá! Bem-vindo à Privacy Family! Eu sou a sua atendente de suporte. Estou aqui para ajudá-lo com qualquer dúvida ou problema que você esteja enfrentando. Você digitou &quot;dfbgdzf&quot;, mas não consigo entender bem o que você precisa. Pode me dar mais detalhes sobre o que está acontecendo ou o que você precisa? Estou aqui para ouvir e ajudar!</div>
+                        
+                    </div>
+                </div><div class="message message-grouped">
+                    <div class="msg-gutter"><span class="hover-time">11:28</span></div>
+                    <div class="msg-content">
+                        <div class="reply-bar">
+                        <img src="https://cdn.discordapp.com/avatars/1000961474086322249/655aa7c28aaaabce01a439020959735f.png?size=1024" class="reply-avatar">
+                        <span class="reply-author">Cherry</span>
+                        <span class="reply-content">cvbdfbnf</span>
+                    </div>
+                        <div class="text">Olá! Seja bem-vindo à Privacy Family! Eu sou a sua atendente de suporte. Estou aqui para ajudar com qualquer dúvida ou problema que você possa ter. Pode me contar um pouco sobre o que você precisa? Qual é o motivo do seu contato conosco hoje?</div>
+                        
+                    </div>
+                </div><div class="message">
+                    <div class="msg-gutter"><img src="https://cdn.discordapp.com/avatars/1000961474086322249/655aa7c28aaaabce01a439020959735f.png?size=1024" class="avatar" loading="lazy"></div>
+                    <div class="msg-content">
+                        
+                        <div class="msg-header">
+                            <span class="author" style="color:#6a009e">Cherry</span>
+                            
+                            <span class="timestamp">13/08/2026 11:29</span>
+                        </div>
+                        <div class="text"><img src="<a href="https://cdn.discordapp.com/emojis/1168376243444523040.gif?size=48"" target="_blank" class="link">https://cdn.discordapp.com/emojis/1168376243444523040.gif?size=48"</a> class="emoji" alt=":emoji_304:"></div>
+                        
+                    </div>
+                </div><div class="message">
+                    <div class="msg-gutter"><img src="https://cdn.discordapp.com/avatars/1534194785655459960/bdf2083e701c309d75a99882800c4a0c.png?size=1024" class="avatar" loading="lazy"></div>
+                    <div class="msg-content">
+                        <div class="reply-bar">
+                        <img src="https://cdn.discordapp.com/avatars/1000961474086322249/655aa7c28aaaabce01a439020959735f.png?size=1024" class="reply-avatar">
+                        <span class="reply-author">Cherry</span>
+                        <span class="reply-content">]&lt;a:3_dancing:1075097205540663417&gt;</span>
+                    </div>
+                        <div class="msg-header">
+                            <span class="author" style="color:#607d8b">Privacyᵇᵒᵗ</span>
+                            <span class="bot-tag"><svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M7.4,11.17,4,8.62,5,7.26l2,1.53L10.64,4l1.36,1Z"/></svg>BOT</span>
+                            <span class="timestamp">13/08/2026 11:29</span>
+                        </div>
+                        <div class="text">Olá! Seja bem-vindo à Privacy Family! Estou aqui para ajudar com qualquer dúvida ou problema que você esteja enfrentando. Pode me contar um pouco sobre o que você precisa de ajuda hoje?</div>
+                        
+                    </div>
+                </div><div class="message">
+                    <div class="msg-gutter"><img src="https://cdn.discordapp.com/avatars/1000961474086322249/655aa7c28aaaabce01a439020959735f.png?size=1024" class="avatar" loading="lazy"></div>
+                    <div class="msg-content">
+                        
+                        <div class="msg-header">
+                            <span class="author" style="color:#6a009e">Cherry</span>
+                            
+                            <span class="timestamp">13/08/2026 11:29</span>
+                        </div>
+                        <div class="text"><img src="<a href="https://cdn.discordapp.com/emojis/892740140622028811.gif?size=48"" target="_blank" class="link">https://cdn.discordapp.com/emojis/892740140622028811.gif?size=48"</a> class="emoji" alt=":3_risadoca:"></div>
+                        
+                    </div>
+                </div><div class="message">
+                    <div class="msg-gutter"><img src="https://cdn.discordapp.com/avatars/1534194785655459960/bdf2083e701c309d75a99882800c4a0c.png?size=1024" class="avatar" loading="lazy"></div>
+                    <div class="msg-content">
+                        <div class="reply-bar">
+                        <img src="https://cdn.discordapp.com/avatars/1000961474086322249/655aa7c28aaaabce01a439020959735f.png?size=1024" class="reply-avatar">
+                        <span class="reply-author">Cherry</span>
+                        <span class="reply-content">&lt;a:emoji_304:1168376243444523040&gt;</span>
+                    </div>
+                        <div class="msg-header">
+                            <span class="author" style="color:#607d8b">Privacyᵇᵒᵗ</span>
+                            <span class="bot-tag"><svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M7.4,11.17,4,8.62,5,7.26l2,1.53L10.64,4l1.36,1Z"/></svg>BOT</span>
+                            <span class="timestamp">13/08/2026 11:29</span>
+                        </div>
+                        <div class="text">Olá! Seja bem-vindo à Privacy Family! Estou aqui para ajudar com qualquer dúvida ou problema que você possa ter. Você poderia me contar um pouco mais sobre o que você precisa de ajuda hoje? Qual é o assunto ou problema que você gostaria de resolver?</div>
+                        
+                    </div>
+                </div><div class="message message-grouped">
+                    <div class="msg-gutter"><span class="hover-time">11:29</span></div>
+                    <div class="msg-content">
+                        <div class="reply-bar">
+                        <img src="https://cdn.discordapp.com/avatars/1000961474086322249/655aa7c28aaaabce01a439020959735f.png?size=1024" class="reply-avatar">
+                        <span class="reply-author">Cherry</span>
+                        <span class="reply-content">&lt;a:3_risadoca:892740140622028811&gt;</span>
+                    </div>
+                        <div class="text">Olá! Bem-vindo à Privacy Family! Eu sou sua atendente de suporte hoje. Como posso ajudá-lo? Você tem alguma dúvida ou precisa de assistência com algo específico? Por favor, me conte um pouco mais sobre o que você precisa, e farei o meu melhor para ajudá-lo!</div>
+                        
+                    </div>
+                </div>
+</div>
+<div class="transcript-footer">
+    <div class="footer-brand"><div class="brand-dot">🔒</div><span>PrivacyBOT</span></div>
+    <div class="footer-meta">Transcript gerado automaticamente em 13/08/2026 às 11:29<br>Participantes: Cherry, Privacyᵇᵒᵗ</div>
+</div>
+</body>
+</html>
