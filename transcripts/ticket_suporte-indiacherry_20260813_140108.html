@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcript do Ticket - suporte-indiacherry</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #36393f;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #5865F2 0%, #7289da 100%);
+            padding: 30px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header .info {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .ticket-details {
+            background: #40444b;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+        }
+        
+        .ticket-details h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .ticket-details .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #4f545c;
+        }
+        
+        .ticket-details .detail-row:last-child {
+            border-bottom: none;
+        }
+        
+        .ticket-details .detail-label {
+            color: #99aab5;
+            font-weight: 500;
+        }
+        
+        .ticket-details .detail-value {
+            color: #fff;
+            text-align: right;
+        }
+        
+        .messages {
+            padding: 20px;
+        }
+        
+        .message {
+            display: flex;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #40444b;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+        
+        .message:hover {
+            transform: translateX(5px);
+        }
+        
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+        
+        .content {
+            flex: 1;
+        }
+        
+        .author {
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .author .bot-tag {
+            background: #5865F2;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: normal;
+        }
+        
+        .timestamp {
+            font-size: 12px;
+            color: #99aab5;
+            margin-left: auto;
+        }
+        
+        .text {
+            color: #dcddde;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .attachment {
+            margin-top: 10px;
+        }
+        
+        .attachment img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 5px;
+        }
+        
+        .embed {
+            background: #2f3136;
+            border-left: 4px solid #5865F2;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+        
+        .embed-title {
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .embed-description {
+            color: #dcddde;
+            line-height: 1.5;
+        }
+        
+        .embed-field {
+            margin-top: 10px;
+        }
+        
+        .embed-field-name {
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        
+        .embed-field-value {
+            color: #dcddde;
+        }
+        
+        .footer {
+            background: #2f3136;
+            padding: 30px 20px;
+            text-align: center;
+            color: #99aab5;
+            font-size: 14px;
+            border-top: 1px solid #40444b;
+        }
+        
+        .credits {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .credits-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #5865F2 0%, #7289da 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto;
+        }
+        
+        .credits-text {
+            font-size: 13px;
+            color: #99aab5;
+        }
+        
+        .credits-text strong {
+            color: #fff;
+        }
+        
+        .powered-by {
+            margin-top: 10px;
+            padding-top: 15px;
+            border-top: 1px solid #40444b;
+            font-size: 12px;
+            color: #72767d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎫 Transcript do Ticket</h1>
+            <div class="info">
+                <p><strong>ID:</strong> suporte-indiacherry</p>
+                <p><strong>Criado por:</strong> 𝒞ℎ𝑒𝑟𝑟𝑦 ᶜᵒˡᵈ</p>
+                <p><strong>Data de criação:</strong> 13/08/2026 10:59:54</p>
+                <p><strong>Fechado em:</strong> 13/08/2026 11:01:08</p>
+            </div>
+        </div>
+        <div class="ticket-details"><h3>📋 Detalhes do Atendimento</h3>
+                <div class="detail-row">
+                    <span class="detail-label">Painel</span>
+                    <span class="detail-value">Suporte Privacy</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Modo</span>
+                    <span class="detail-value">channel</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Motivo do fechamento</span>
+                    <span class="detail-value">teste</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Fechado por</span>
+                    <span class="detail-value">Cherry</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Assumido por</span>
+                    <span class="detail-value">Não assumido</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Prioridade</span>
+                    <span class="detail-value">Normal</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Status</span>
+                    <span class="detail-value">Fechado</span>
+                </div>
+                </div>
+        <div class="messages">
+            
+            <div class="message">
+                <img src="https://cdn.discordapp.com/avatars/1534194785655459960/bdf2083e701c309d75a99882800c4a0c.png?size=1024" alt="Privacyᵇᵒᵗ" class="avatar">
+                <div class="content">
+                    <div class="author">
+                        Privacyᵇᵒᵗ <span class="bot-tag">BOT</span>
+                        <span class="timestamp">13/08/2026 10:59:57</span>
+                    </div>
+                    <div class="text"></div>
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="message">
+                <img src="https://cdn.discordapp.com/avatars/1534194785655459960/bdf2083e701c309d75a99882800c4a0c.png?size=1024" alt="Privacyᵇᵒᵗ" class="avatar">
+                <div class="content">
+                    <div class="author">
+                        Privacyᵇᵒᵗ <span class="bot-tag">BOT</span>
+                        <span class="timestamp">13/08/2026 10:59:59</span>
+                    </div>
+                    <div class="text"></div>
+                    
+                    
+                </div>
+            </div>
+            
+        </div>
+        <div class="footer">
+            <p>Gerado automaticamente pelo bot • 13/08/2026 11:01:08</p>
+            <div class="credits">
+                <div class="credits-logo">🏢</div>
+                <div class="credits-text">
+                    <strong>Privacy Bot</strong><br>
+                    Sistema de gestão de tickets e suporte
+                </div>
+                <div class="powered-by">
+                    Powered by Privacy • © 2026
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
